@@ -1,5 +1,6 @@
 <?php
 /**
+ * Takes in a ttid and sees if it's reated via term_relation. Needs cleanup, that's so damn ugly. 
  */
 class views_handler_argument_term_data_term_relationship extends views_handler_argument {
   function query() {

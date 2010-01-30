@@ -1,11 +1,17 @@
 <?php
+
+/**
+ * Implementation of hook_views_api().
+ */
 function multivocabrelatedterm_views_api() {
   return array(
     'api' => 2,
     'path' => drupal_get_path('module', 'multivocabrelatedterm'),
   );
 }
-
+/**
+ * Implementation of hook_form_FORM_ID_alter().
+ */
 function multivocabrelatedterm_form_taxonomy_form_term_alter(&$form, $form_state) {
   unset($form['advanced']['relations']);
   $form['relations'] = array(
@@ -34,7 +40,9 @@ function multivocabrelatedterm_form_taxonomy_form_submit($form, &$form_state) {
   } 
   $form_state['values']['relations'] = $relations ; 
 }
-
+/*
+ * I hate select lists. Tough. 
+ */
 function _taxonomy_term_checkboxes($title, $name, $value, $vocabulary_id, $description, $multiple, $exclude = array()) {
   $tree = taxonomy_get_tree($vocabulary_id);
   $options = array();
@@ -62,7 +70,9 @@ function _taxonomy_term_checkboxes($title, $name, $value, $vocabulary_id, $descr
   );
 }
 
-
+/*
+ * Display related terms by vocabulary
+*/
 function multivocabrelatedterm_ctools_content_types() {
   return array(
     'taxonomy_related_by_vocab' => array(
